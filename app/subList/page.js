@@ -221,12 +221,12 @@ const EmployeeList = () => {
           <table className="min-w-full table-auto mt-1">
             <thead className='bg-orange-400 text-white'>
               <tr>
-                <th className="px-4 py-2 text-left ">Sr.No.</th>
-                <th className="px-4 py-2 text-left">Name</th>
-                <th className="px-4 py-2 text-left">Email</th>
-                <th className="px-4 py-2 text-left">Phone Number</th>
-                <th className="px-4 py-2 text-left">Company Name</th>
-                <th className="px-4 py-2 text-center">Actions</th>
+                <th className="px-4 py-2 text-left  text-white">Sr.No.</th>
+                <th className="px-4 py-2 text-left text-gray-800">Name</th>
+                <th className="px-4 py-2 text-left text-gray-800">Email</th>
+                <th className="px-4 py-2 text-left text-gray-800">Phone Number</th>
+                <th className="px-4 py-2 text-left text-gray-800">Company Name</th>
+                <th className="px-4 py-2 text-center text-gray-800">Actions</th>
               </tr>
             </thead>
             <tbody>
