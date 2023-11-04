@@ -351,7 +351,7 @@ const PendingTasks = () => {
           <input
             type="text"
             placeholder="Search Tasks"
-            className="px-3 py-1 border border-gray-400 rounded-full w-full md:w-1/2"
+            className="px-3 py-1 border border-gray-400 rounded-full w-full md:w-96"
             value={searchQuery}
             onChange={handleSearchInputChange}
           />
