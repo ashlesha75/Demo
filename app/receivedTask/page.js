@@ -171,7 +171,8 @@ const ReceivedTaskList = () => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {tasks.map((task) => {
+                {tasks.length > 0 ? (
+                tasks.map((task) => {
                   const { colorClass, statusText } = getStatusColorAndText(task);
                   return (
                     // <tr key={task._id} className={`hover:bg-gray-100 ${colorClass}`}>
@@ -203,7 +204,14 @@ const ReceivedTaskList = () => {
                       </td>
                     </tr>
                   );
-                })}
+                })
+                ) : (
+                  <tr>
+                    <td colSpan="8" className="px-4 py-2 text-center border">
+                      No overdue tasks found.
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>

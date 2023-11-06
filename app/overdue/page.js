@@ -157,7 +157,7 @@ const Overdue = () => {
                 </tr>
               </thead>
               <tbody>
-                {overdueTasks.length > 0 ? (
+                {filteredTasks.length > 0 ? (
                   filteredTasks.map((task, index) => (
                     <tr key={task._id}>
                       <td className="px-4 py-2 text-center border">{index + 1}</td>

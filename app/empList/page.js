@@ -199,7 +199,8 @@ const EmployeeList = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {employees.map((employee) => (
+                            {employees.length > 0 ? (
+                            employees.map((employee) => (
                                 <tr key={employee._id}>
                                     <td className="border px-4 py-2 text-left">{employee.name}</td>
                                     <td className="border px-4 py-2">{employee.email}</td>
@@ -223,7 +224,14 @@ const EmployeeList = () => {
                                         />
                                     </td>
                                 </tr>
-                            ))}
+                            ))
+                            ) : (
+                                <tr>
+                                  <td colSpan="8" className="px-4 py-2 text-center border">
+                                    No any admin.
+                                  </td>
+                                </tr>
+                              )}
                         </tbody>
                     </table>
 

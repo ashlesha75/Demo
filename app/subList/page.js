@@ -201,7 +201,7 @@ const EmployeeList = () => {
           <input
             type="text"
             placeholder="Search Employees"
-            className="px-3 py-1 border border-gray-400 rounded-full w-full md:w-1/2"
+            className="px-3 py-1 border border-gray-400 rounded-full w-full md:w-96"
             value={searchQuery}
             onChange={handleSearchInputChange}
           />
@@ -221,16 +221,16 @@ const EmployeeList = () => {
           <table className="min-w-full table-auto mt-1">
             <thead className='bg-orange-400 text-white'>
               <tr>
-                <th className="px-4 py-2 text-left  text-white">Sr.No.</th>
-                <th className="px-4 py-2 text-left text-gray-800">Name</th>
-                <th className="px-4 py-2 text-left text-gray-800">Email</th>
-                <th className="px-4 py-2 text-left text-gray-800">Phone Number</th>
-                <th className="px-4 py-2 text-left text-gray-800">Company Name</th>
-                <th className="px-4 py-2 text-center text-gray-800">Actions</th>
+                <th className="px-4 py-2 text-center  text-white">Sr.No.</th>
+                <th className="px-4 py-2 text-center text-white">Name</th>
+                <th className="px-4 py-2 text-center text-white">Email</th>
+                <th className="px-4 py-2 text-center text-white">Phone Number</th>
+                <th className="px-4 py-2 text-center text-white">Company Name</th>
+                <th className="px-4 py-2 text-center text-white">Actions</th>
               </tr>
             </thead>
             <tbody>
-              {EmployeeList.length > 0 ? (
+              {filteredEmployees.length > 0 ? (
               filteredEmployees.map((employee) => (
                 <tr key={employee._id}>
                   <td className="border px-4 py-2 text-center">{serialNumber++}</td>

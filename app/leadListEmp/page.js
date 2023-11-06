@@ -111,16 +111,17 @@ const LeadListEmp = () => {
             <thead className='bg-violet-300'>
               <tr>
                 <th className="p-3 text-center">Sr.No</th>
-                <th className="p-3 text-left">Customer Name</th>
+                <th className="p-3 text-center">Customer Name</th>
                 {/* <th className="border border-gray-200 p-3">Company Name</th> */}
                 {/* <th className=" p-3">Description</th> */}
-                <th className="p-3 text-left">Contact No</th>
+                <th className="p-3 text-center">Contact No</th>
                 <th className="p-3 text-center">Email</th>
                 <th className="p-3 text-center">Actions</th>
               </tr>
             </thead>
             <tbody>
-              {leads.map((lead, index) => (
+              {leads.length > 0 ? (
+              leads.map((lead, index) => (
                 <tr key={lead._id}>
                   <td className="border border-violet-300 p-3 text-center">{index + 1}</td>
                   <td className="border border-violet-300 p-3">{lead.customerName}</td>
@@ -149,7 +150,15 @@ const LeadListEmp = () => {
 
                   </td>
                 </tr>
-              ))}
+              ))
+              ) : (
+                <tr>
+                  <td colSpan="8" className="px-4 py-2 text-center border">
+                    No any lead.
+                  </td>
+                </tr>
+              )
+              }
             </tbody>
           </table>
         </div>

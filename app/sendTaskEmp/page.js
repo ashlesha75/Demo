@@ -273,7 +273,7 @@ const sendTaskEmp = () => {
                     <input
                         type="text"
                         placeholder="Search Tasks"
-                        className="px-3 py-1 border border-gray-400 rounded-full w-full md:w-1/2"
+                        className="px-3 py-1 border border-gray-400 rounded-full w-full md:w-96"
                         value={searchQuery}
                         onChange={handleSearchInputChange}
                     />
@@ -313,7 +313,8 @@ const sendTaskEmp = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {filteredTasks.map((task) => (
+                                {filteredTasks.length > 0 ? (
+                                filteredTasks.map((task) => (
                                     <tr key={task._id} className="hover:bg-gray-100">
                                         <td className="border px-4 py-2 text-center">{serialNumber++}</td>
                                         <td className="border px-4 py-2">{task.title}</td>
@@ -350,7 +351,15 @@ const sendTaskEmp = () => {
                                             </div>
                                         </td>
                                     </tr>
-                                ))}
+                                ))
+                                ) : (
+                                    <tr>
+                                      <td colSpan="8" className="px-4 py-2 text-center border">
+                                        No any task.
+                                      </td>
+                                    </tr>
+                                  )
+                                }
                             </tbody>
                         </table>
                     </div>

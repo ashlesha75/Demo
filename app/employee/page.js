@@ -122,10 +122,13 @@ const EmployeeRegistration = () => {
                             <input
                                 type="text"
                                 name="phoneNumber"
-                                placeholder='+91 23 456 7890'
+                                placeholder='+91 123 456 7890'
                                 value={formData.phoneNumber}
                                 onChange={handleChange}
+                                required
                                 className="w-full px-4 py-1 md:py-2 border rounded-md focus:ring focus:ring-indigo-400 text-xs md:text-sm"
+                                
+
                             />
                         </div>
                         <div>

@@ -141,7 +141,7 @@ const OverdueByEmployee = () => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="8" className="px-4 py-2 border">
+                    <td colSpan="8" className="px-4 py-2 text-center border">
                       No overdue tasks found.
                     </td>
                   </tr>

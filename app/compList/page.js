@@ -108,10 +108,10 @@ const CompanyList = () => {
 
                     </div>
 
-                    <div className="relative mb-4 md:mb-20">
+                    <div className="relative mb-7 md:mb-14">
                         <button
-                            className="bg-orange-500 text-white font-bold py-1 md:py-2 px-2 md:px-6 rounded-lg md:absolute top-2 right-2 text-sm md:text-base" // Positioning
-                            style={{ right: '305px' }} // Adjust the right property to move the button to the left
+                            className="bg-orange-500 text-white font-bold py-1 px-5 rounded-lg absolute top-2 right-1" // Positioning
+                             // Adjust the right property to move the button to the left
 
                             onClick={() => router.push('/company')}
                         >
@@ -130,7 +130,8 @@ const CompanyList = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {companies
+                                {companies.length > 0 ? (
+                                companies
                                     .filter((company) =>
                                         company.companyName.toLowerCase().includes(searchQuery.toLowerCase())
                                     )
@@ -148,7 +149,14 @@ const CompanyList = () => {
                                                 />
                                             </td>
                                         </tr>
-                                    ))}
+                                    ))
+                                    ) : (
+                                        <tr>
+                                          <td colSpan="8" className="px-4 py-2 text-center border">
+                                            No any company added.
+                                          </td>
+                                        </tr>
+                                      )}
                             </tbody>
                         </table>
                     </div>

@@ -86,10 +86,7 @@ const CompletedTaskList = () => {
               className="text-white text-4xl" // You can customize the size and color
             />
           </div>
-        ) : (
-          <div>
-            {completedTasks.length === 0 ? (
-              <p className="text-gray-600">No completed tasks found.</p>
+        
             ) : (
               <div className="overflow-x-auto">
                 <table className="min-w-full table-auto">
@@ -104,7 +101,8 @@ const CompletedTaskList = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {completedTasks.map((task, index) => (
+                    {completedTasks.length > 0 ? (
+                    completedTasks.map((task, index) => (
                       <tr key={task._id}>
                         <td className="border border-green-500 px-4 py-2 text-center">{index + 1}</td>
                         <td className="border border-green-500  px-4 py-2">
@@ -129,13 +127,21 @@ const CompletedTaskList = () => {
                           </div>
                         </td>
                       </tr>
-                    ))}
+                    ))
+                    
+                    ) : (
+                      <tr>
+                        <td colSpan="8" className="px-4 py-2 text-center border">
+                          No overdue tasks found.
+                        </td>
+                      </tr>
+                    )}
                   </tbody>
                 </table>
               </div>
             )}
-          </div>
-        )}
+          
+        
       </div>
 
       {/* View Task Modal */}

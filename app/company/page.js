@@ -46,6 +46,7 @@ const CompanyCreationForm = () => {
       <NavSideSuper/>
       <div className="bg-white dark:bg-gray-900">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 mt-20 md:mt-0 ">
+          <h2 className="text-center text-orange-500 text-2xl md:text-3xl font-bold"> Create Company</h2>
           <div className="w-full p-6 bg-white rounded-lg shadow dark:border sm:max-w-md dark:bg-gray-800 dark:border-gray-700 sm:p-8 mt-20 border border-gray-300">
             <h2 className="mb-4 text-xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white">
               Create a New Company

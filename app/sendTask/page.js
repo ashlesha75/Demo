@@ -406,7 +406,7 @@ const sendTask = () => {
                 </tr>
               </thead>
               <tbody>
-                {sendTask.length > 0 ? (
+                {filteredTasks.length > 0 ? (
                  filteredTasks.map((task) => (
                   <tr key={task._id} className="hover:bg-gray-100">
                     <td className="border px-4 py-2 text-center">{serialNumber++}</td>

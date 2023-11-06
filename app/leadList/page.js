@@ -150,7 +150,7 @@ const LeadList = () => {
               </tr>
             </thead>
             <tbody>
-              {LeadList.length > 0 ? (
+              {filteredLeads.length > 0 ? (
               filteredLeads.map((lead, index) => (
                 <tr key={lead._id}>
                   <td className="border border-gray-200 p-3 text-center">{index + 1}</td>

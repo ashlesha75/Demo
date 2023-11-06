@@ -151,34 +151,35 @@ const ReceivedTaskList = () => {
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className='bg-orange-500 text-white'>
+            <table className="min-w-full table-auto">
+              <thead className='bg-orange-400 text-white'>
                 <tr>
-                  <th className="px-4 py-2 text-center text-xs font-bold uppercase tracking-wider">
+                  <th className="px-4 py-2 text-center">
                     Sr. No.
                   </th>
-                  <th className="px-4 py-2 pl-10 text-left text-xs font-bold  uppercase tracking-wider">
+                  <th className="px-4 py-2 pl-10 text-left ">
                     Title
                   </th>
                   {/* <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Status
               </th> */}
-                  <th className="px-4 py-2 pl-10 text-left text-xs font-bold  uppercase tracking-wider">
+                  <th className="px-4 py-2 pl-10 text-left  ">
                     Date
                   </th>
-                  <th className="px-4 py-2 text-left text-xs font-bold  uppercase tracking-wider">
+                  <th className="px-4 py-2 text-left ">
                     Deadline Date
                   </th>
-                  <th className="px-4 py-2 pl-5 text-left text-xs font-bold  uppercase tracking-wider">
+                  <th className="px-4 py-2 pl-5 text-left ">
                     AssignedBy
                   </th>
-                  <th className="px-20 py-2 text-left text-xs font-bold  uppercase tracking-wider">
+                  <th className="px-20 py-2 text-left ">
                     Actions
                   </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200 border border-gray-200">
-                {tasks.map((task) => (
+                {tasks.length > 0 ? (
+                tasks.map((task) => (
                   <tr key={task._id}>
                     <td className="px-6 py-1 whitespace-nowrap text-center border border-orange-400">{serialNumber++}</td>
                     <td className="px-6 py-1 whitespace-nowrap border border-orange-400">{task.title}</td>
@@ -206,7 +207,15 @@ const ReceivedTaskList = () => {
                       </button>
                     </td>
                   </tr>
-                ))}
+                ))
+                ) : (
+                  <tr>
+                    <td colSpan="8" className="px-4 py-2 text-center border">
+                      No any pending task.
+                    </td>
+                  </tr>
+                )
+                }
               </tbody>
             </table>
           </div>

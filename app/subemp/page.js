@@ -61,6 +61,7 @@ const SubemployeeForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log("clicked")
 
         // Send a POST request to create the subemployee
         try {

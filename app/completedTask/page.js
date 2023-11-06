@@ -249,7 +249,7 @@ const CompletedTaskList = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {completedTasks.length > 0 ? (
+                    {filteredTasks.length > 0 ? (
                     filteredTasks.map((task, index) => (
                       <tr key={task._id}>
                         <td className="border px-4 py-2 text-center">{index + 1}</td>
