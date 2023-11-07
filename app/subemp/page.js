@@ -5,6 +5,8 @@ import Navbar from '../components/Navbar';
 import AdminSidebar from '../components/AdminSidebar';
 import { useRouter } from 'next/navigation';
 import NavSide from '../components/NavSide';
+import {faEye,faEyeSlash,faEnvelope} from "@fortawesome/free-solid-svg-icons";
+  import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 const SubemployeeForm = () => {
@@ -20,6 +22,15 @@ const SubemployeeForm = () => {
     });
     const [error, setError] = useState(null);
     const [successMessage, setSuccessMessage] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+      };
+
+      const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
+      };
 
     useEffect(() => {
         // Fetch the admin's company name and pre-fill it in the form
@@ -95,28 +106,28 @@ const SubemployeeForm = () => {
         <>
             <NavSide/>
             <div>
-                <section className="bg-gray-50 dark:bg-gray-900 mt-8 p-8">
-                    <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-                        <div className="w-72 md:w-96 p-4 bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md dark:bg-gray-800 dark:border-gray-700 sm:p-8">
+                <section className="bg-gray-50 dark:bg-gray-900 ">
+                    <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-6 ">
+                        <div className="w-72 md:w-96 p-4 mt-10 bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md dark:bg-gray-800 dark:border-gray-700 sm:p-8">
                             <h2 className="text-xl font-bold leading-tight tracking-tight text-orange-500 md:text-2xl dark:text-white">
                                 Create Employee
                             </h2>
-                            <form onSubmit={handleSubmit} className="mt-2 space-y-2 lg:mt-5 md:space-y-5">
+                            <form onSubmit={handleSubmit} className="mt-2 space-y-2 lg:mt-3 md:space-y-3">
                                 <div>
-                                    <label htmlFor="name" className="block mb-0 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                                    <label htmlFor="name" className="block mb-0 text-sm font-medium text-gray-900 dark:text-white">Name <span className="text-red-500">*</span></label>
                                     <input
                                         type="text"
                                         name="name"
                                         id="name"
                                         className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 text-sm md:text-base"
-                                        placeholder="Employee Name"
+                                        placeholder="Enter Employee Name"
                                         required
                                         value={subEmployee.name}
                                         onChange={handleChange}
                                     />
                                 </div>
-                                <div>
-                                    <label htmlFor="email" className="block mb-0 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                                <div className="relative">
+                                    <label htmlFor="email" className="block mb-0 text-sm font-medium text-gray-900 dark:text-white">Email <span className="text-red-500">*</span></label>
                                     <input
                                         type="email"
                                         name="email"
@@ -127,11 +138,28 @@ const SubemployeeForm = () => {
                                         value={subEmployee.email}
                                         onChange={handleChange}
                                     />
+                                    <span className="absolute right-3 top-2 transform -translate-y-0">
+                                    <FontAwesomeIcon
+                                     icon={faEnvelope}
+                                     className="text-gray-500 mt-6"
+                                     />{" "}
+                                     {/* Email icon */}
+                                    </span>
                                 </div>
-                                <div>
-                                    <label htmlFor="password" className="block mb-0 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                                <div className="relative">
+                                    <label htmlFor="password" className="block mb-0 text-sm font-medium text-gray-900 dark:text-white">Password <span className="text-red-500">*</span></label>
                                     <input
-                                        type="password"
+                                     type={showPassword ? "text" : "password"}
+                                     name="password"
+                                     id="password"
+                                     placeholder="Enter Password"
+                                     required
+                                     value={subEmployee.password}
+                                     onChange={handleChange}
+                                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 text-sm md:text-base"
+                                     />
+                                    {/* <input
+                                        type={showPassword ? "text" : "password"}
                                         name="password"
                                         id="password"
                                         className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 text-sm md:text-base"
@@ -139,9 +167,18 @@ const SubemployeeForm = () => {
                                         required
                                         value={subEmployee.password}
                                         onChange={handleChange}
+                                    /> */}
+                                    <span
+                                     className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
+                                     onClick={togglePasswordVisibility}
+                                    >
+                                    <FontAwesomeIcon
+                                    icon={showPassword ? faEye : faEyeSlash} // Use the imported icons
+                                    className="text-gray-500 mt-6"
                                     />
+                                   </span>
                                 </div>
-                                <div>
+                                {/* <div>
                                     <label htmlFor="adminCompanyName" className="block mb-0 text-sm font-medium text-gray-900 dark:text-white">Admin Company</label>
                                     <input
                                         type="text"
@@ -151,15 +188,16 @@ const SubemployeeForm = () => {
                                         readOnly
                                         value={subEmployee.adminCompanyName}
                                     />
-                                </div>
+                                </div> */}
                                 <div>
-                                    <label htmlFor="phoneNumber" className="block mb-0 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
+                                    <label htmlFor="phoneNumber" className="block mb-0 text-sm font-medium text-gray-900 dark:text-white">Phone Number <span className="text-red-500">*</span></label>
                                     <input
                                         type="text"
                                         name="phoneNumber"
                                         id="phoneNumber"
                                         className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 text-sm md:text-base"
-                                        placeholder="123-456-789"
+                                        placeholder="+91 123-456-789"
+                                        required
                                         value={subEmployee.phoneNumber}
                                         onChange={handleChange}
                                     />

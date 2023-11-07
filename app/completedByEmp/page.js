@@ -19,12 +19,26 @@ const CompletedTaskList = () => {
   const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(false);
   const [completeImageUrl, setPreviewImageUrl] = useState('');
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [tasksPerPage] = useState(15); // Define tasks to show per page
+
+  const calculateSerialNumber = (index) => {
+    return index + (currentPage - 1) * tasksPerPage + 1;
+  };
+
 
   const handlePicturePreview = (imageUrl) => {
     const completeImageUrl = `http://localhost:5000/${imageUrl}`; // Generate the complete image URL
     setPreviewImageUrl(completeImageUrl);
     setIsPreviewModalOpen(true);
   };
+
+  const indexOfLastTask = currentPage * tasksPerPage;
+  const indexOfFirstTask = indexOfLastTask - tasksPerPage;
+  const currentTasks = completedTasks.slice(indexOfFirstTask, indexOfLastTask);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
 
   useEffect(() => {
     const fetchCompletedTasks = async () => {
@@ -102,7 +116,7 @@ const CompletedTaskList = () => {
                   </thead>
                   <tbody>
                     {completedTasks.length > 0 ? (
-                    completedTasks.map((task, index) => (
+                    currentTasks.map((task, index) => (
                       <tr key={task._id}>
                         <td className="border border-green-500 px-4 py-2 text-center">{index + 1}</td>
                         <td className="border border-green-500  px-4 py-2">
@@ -132,12 +146,31 @@ const CompletedTaskList = () => {
                     ) : (
                       <tr>
                         <td colSpan="8" className="px-4 py-2 text-center border">
-                          No overdue tasks found.
+                          No task completed
                         </td>
                       </tr>
                     )}
                   </tbody>
                 </table>
+                <ul className="flex justify-center items-center mt-4">
+              {Array.from(
+                { length: Math.ceil(completedTasks.length / tasksPerPage) },
+                (_, index) => (
+                  <li key={index} className="px-3 py-2">
+                    <button
+                      onClick={() => paginate(index + 1)}
+                      className={`${
+                        currentPage === index + 1
+                          ? "bg-blue-500 text-white"
+                          : "bg-gray-200 text-gray-800"
+                      } px-4 py-2 rounded`}
+                    >
+                      {index + 1}
+                    </button>
+                  </li>
+                )
+              )}
+            </ul>
               </div>
             )}
           

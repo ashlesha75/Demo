@@ -76,11 +76,30 @@ const TaskForm = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    
+    // If the changed input is the start time, calculate the end time with a 5-minute difference.
+    if (name === 'startTime') {
+      const [hour, minute] = value.split(':').map(Number);
+      const totalMinutes = hour * 60 + minute + 5;
+      const endHour = Math.floor(totalMinutes / 60) % 12;
+      const endMinute = totalMinutes % 60;
+      const endAmPm = totalMinutes < 720 ? 'AM' : 'PM';
+      const endTime = `${endHour}:${endMinute.toString().padStart(2, '0')} ${endAmPm}`;
+      
+      setFormData({
+        ...formData,
+        [name]: value,
+        endTime,
+      });
+    } else {
+      // If the changed input is the end time, update it directly.
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
   };
+  
 
   const handleFileChange = (e) => {
     const { name, files } = e.target;

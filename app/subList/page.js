@@ -207,7 +207,7 @@ const EmployeeList = () => {
           />
         </div>
 
-        <div className="relative mb-10 md:mb-20">
+        <div className="relative mb-16 md:mb-20">
           <button
             className="bg-orange-500 text-white font-bold py-0.5 px-3 rounded-lg absolute top-2 right-1"
             onClick={handleAddClick}
